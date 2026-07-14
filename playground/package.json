@@ -9,11 +9,10 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxt/module-builder": "^1.0.2",
     "my-module": "latest",
     "nuxt": "^4.4.8",
     "nuxt-ssr-telemetry": "file:.."
   },
-  "devDependencies": {
-    "@nuxt/module-builder": "^1.0.2"
-  }
+  "devDependencies": {}
 }
