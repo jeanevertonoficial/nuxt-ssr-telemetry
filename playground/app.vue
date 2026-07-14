@@ -4,7 +4,7 @@
       <div class="logo-area">
         <span class="logo-icon">🧪</span>
         <h1>Nuxt SSR Telemetry</h1>
-        <span class="badge">v0.1.4</span>
+        <span class="badge">v0.1.5</span>
       </div>
       <p class="subtitle">
         Production-ready end-to-end trace correlation and structured Pino logging for Nuxt 3 applications.
@@ -14,8 +14,12 @@
     <main class="demo-grid">
       <!-- Left Panel: Actions & Settings -->
       <section class="panel-section card settings-panel">
-        <h2 class="panel-title">Interactive Controller</h2>
-        <p class="panel-desc">Simulate requests, pass correlation headers, and witness trace propagation.</p>
+        <h2 class="panel-title">
+          Interactive Controller
+        </h2>
+        <p class="panel-desc">
+          Simulate requests, pass correlation headers, and witness trace propagation.
+        </p>
 
         <!-- Hydration Info -->
         <div class="info-block">
@@ -23,10 +27,12 @@
             <span class="info-label">Initial Hydrated Server Request ID</span>
             <span class="tag tag-ssr">SSR Hydrated</span>
           </div>
-          <div class="request-id-badge">{{ initialRequestId || 'None (Client Only)' }}</div>
+          <div class="request-id-badge">
+            {{ initialRequestId || 'None (Client Only)' }}
+          </div>
         </div>
 
-        <div class="divider"></div>
+        <div class="divider" />
 
         <!-- Simulation Options -->
         <div class="control-group">
@@ -37,7 +43,7 @@
             type="text"
             placeholder="x-request-id"
             class="input-text"
-          />
+          >
         </div>
 
         <div class="control-group">
@@ -48,7 +54,7 @@
             type="text"
             placeholder="Leave empty to auto-generate UUID"
             class="input-text"
-          />
+          >
         </div>
 
         <!-- Action Button -->
@@ -57,12 +63,18 @@
           :disabled="loading"
           @click="triggerFetch"
         >
-          <span v-if="loading" class="spinner"></span>
+          <span
+            v-if="loading"
+            class="spinner"
+          />
           <span class="btn-text">{{ loading ? 'Correlating Trace...' : 'Trigger Correlation Request' }}</span>
         </button>
 
         <!-- Response Area -->
-        <div v-if="responseData" class="response-viewer mt-4 fade-in">
+        <div
+          v-if="responseData"
+          class="response-viewer mt-4 fade-in"
+        >
           <div class="viewer-header">
             <span>API Response Header (Correlated)</span>
             <span class="status-indicator success">200 OK</span>
@@ -75,17 +87,33 @@
       <section class="panel-section card logs-panel">
         <div class="panel-header-row">
           <div>
-            <h2 class="panel-title">Full-Stack Trace Logs</h2>
-            <p class="panel-desc">Real-time log stream showing how frontend actions trace back to backend operations.</p>
+            <h2 class="panel-title">
+              Full-Stack Trace Logs
+            </h2>
+            <p class="panel-desc">
+              Real-time log stream showing how frontend actions trace back to backend operations.
+            </p>
           </div>
-          <button class="btn-clear" @click="clearLogs">Clear Logs</button>
+          <button
+            class="btn-clear"
+            @click="clearLogs"
+          >
+            Clear Logs
+          </button>
         </div>
 
         <div class="log-stream">
-          <div v-if="logEntries.length === 0" class="empty-state">
+          <div
+            v-if="logEntries.length === 0"
+            class="empty-state"
+          >
             <p>No logs recorded. Trigger a request to view telemetry trace logs.</p>
           </div>
-          <transition-group name="list" tag="div" class="log-list">
+          <transition-group
+            name="list"
+            tag="div"
+            class="log-list"
+          >
             <div
               v-for="log in logEntries"
               :key="log.id"
@@ -94,13 +122,24 @@
             >
               <div class="log-meta">
                 <span class="log-timestamp">{{ log.timestamp }}</span>
-                <span class="log-badge" :class="log.source">{{ log.source.toUpperCase() }}</span>
-                <span class="log-badge" :class="log.level">{{ log.level.toUpperCase() }}</span>
+                <span
+                  class="log-badge"
+                  :class="log.source"
+                >{{ log.source.toUpperCase() }}</span>
+                <span
+                  class="log-badge"
+                  :class="log.level"
+                >{{ log.level.toUpperCase() }}</span>
                 <span class="log-trace-id">ID: {{ log.requestId }}</span>
               </div>
               <div class="log-body">
-                <p class="log-message">{{ log.message }}</p>
-                <pre v-if="log.rawJson" class="log-raw"><code>{{ log.rawJson }}</code></pre>
+                <p class="log-message">
+                  {{ log.message }}
+                </p>
+                <pre
+                  v-if="log.rawJson"
+                  class="log-raw"
+                ><code>{{ log.rawJson }}</code></pre>
               </div>
             </div>
           </transition-group>
@@ -120,7 +159,7 @@ const headerName = ref('x-request-id')
 const customIdValue = ref('')
 
 // Last request state
-const responseData = ref<any>(null)
+const responseData = ref<{ success: boolean, id: string } | null>(null)
 const loading = ref(false)
 
 // Initial fetch from SSR
@@ -132,7 +171,7 @@ interface LogEntry {
   id: string
   source: 'client' | 'server'
   level: 'info' | 'warn' | 'error' | 'debug'
-  timestamp: string;
+  timestamp: string
   requestId: string
   message: string
   rawJson?: string // for pino log simulation
@@ -152,21 +191,21 @@ const addLog = (entry: Omit<LogEntry, 'id' | 'timestamp'>) => {
 onMounted(() => {
   // 1. Log on client console
   logger.info('Vue component mounted (hydration complete)')
-  
+
   // 2. Add simulated server logs for the SSR load to the UI
   addLog({
     source: 'server',
     level: 'info',
     requestId: initialRequestId,
     message: 'Rendering SSR page for /',
-    rawJson: `{"level":30,"time":${Date.now()},"requestId":"${initialRequestId}","msg":"Rendering SSR page for /"}`
+    rawJson: `{"level":30,"time":${Date.now()},"requestId":"${initialRequestId}","msg":"Rendering SSR page for /"}`,
   })
   addLog({
     source: 'server',
     level: 'info',
     requestId: initialRequestId,
     message: 'Fetching initial telemetry data from DB',
-    rawJson: `{"level":30,"time":${Date.now() - 5},"requestId":"${initialRequestId}","msg":"Fetching initial telemetry data from DB"}`
+    rawJson: `{"level":30,"time":${Date.now() - 5},"requestId":"${initialRequestId}","msg":"Fetching initial telemetry data from DB"}`,
   })
 
   // 3. Add client log
@@ -174,24 +213,24 @@ onMounted(() => {
     source: 'client',
     level: 'info',
     requestId: initialRequestId,
-    message: 'Vue component mounted (hydration complete)'
+    message: 'Vue component mounted (hydration complete)',
   })
 })
 
 const triggerFetch = async () => {
   loading.value = true
   responseData.value = null
-  
+
   // Generate or get the request ID to send
   const reqIdToSend = customIdValue.value.trim() || Math.random().toString(36).substring(2, 15) + '-' + Math.random().toString(36).substring(2, 15)
-  
+
   // Log request start on client
   logger.info(`Initiating fetch to /api/test with ID: ${reqIdToSend}`)
   addLog({
     source: 'client',
     level: 'info',
     requestId: reqIdToSend,
-    message: `Initiating fetch to /api/test`
+    message: `Initiating fetch to /api/test`,
   })
 
   try {
@@ -199,38 +238,41 @@ const triggerFetch = async () => {
     if (headerName.value) {
       headers[headerName.value] = reqIdToSend
     }
-    
+
     const res = await $fetch<{ success: boolean, id: string }>('/api/test', { headers })
     responseData.value = res
-    
+
     // Log success on client
     logger.info(`Received API response with correlated ID: ${res.id}`)
-    
+
     // Add server log (simulating the Pino log from the server)
     addLog({
       source: 'server',
       level: 'info',
       requestId: res.id,
       message: 'API route hit!',
-      rawJson: `{"level":30,"time":${Date.now()},"requestId":"${res.id}","msg":"API route hit!"}`
+      rawJson: `{"level":30,"time":${Date.now()},"requestId":"${res.id}","msg":"API route hit!"}`,
     })
-    
+
     // Add client log
     addLog({
       source: 'client',
       level: 'info',
       requestId: res.id,
-      message: `API Response: success = ${res.success}`
+      message: `API Response: success = ${res.success}`,
     })
-  } catch (err: any) {
-    logger.error(`API Fetch failed: ${err.message}`)
+  }
+  catch (err: unknown) {
+    const errorMsg = err instanceof Error ? err.message : String(err)
+    logger.error(`API Fetch failed: ${errorMsg}`)
     addLog({
       source: 'client',
       level: 'error',
       requestId: reqIdToSend,
-      message: `API Fetch failed: ${err.message}`
+      message: `API Fetch failed: ${errorMsg}`,
     })
-  } finally {
+  }
+  finally {
     loading.value = false
   }
 }
@@ -261,7 +303,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-primary);
   font-family: var(--font-sans);
-  background-image: 
+  background-image:
     radial-gradient(circle at 10% 20%, rgba(0, 220, 130, 0.05) 0%, transparent 40%),
     radial-gradient(circle at 90% 80%, rgba(0, 229, 255, 0.05) 0%, transparent 40%);
   background-attachment: fixed;
