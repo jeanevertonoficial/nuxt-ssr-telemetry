@@ -4,6 +4,7 @@
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
+[![Build Status][ci-src]][ci-href]
 
 `nuxt-ssr-telemetry` is a production-ready telemetry module for Nuxt 3 that solves the complex problem of **Log Traceability (Correlation)** across Server-Side Rendering (SSR) and Client-Side rendering (CSR) boundaries.
 
@@ -202,13 +203,16 @@ npm run test
 
 <!-- Badges -->
 [npm-version-src]: https://img.shields.io/npm/v/nuxt-ssr-telemetry/latest.svg?style=flat&colorA=020420&colorB=00DC82
-[npm-version-href]: https://npmjs.com/package/nuxt-ssr-telemetry
+[npm-version-href]: https://www.npmjs.com/package/nuxt-ssr-telemetry
 
 [npm-downloads-src]: https://img.shields.io/npm/dm/nuxt-ssr-telemetry.svg?style=flat&colorA=020420&colorB=00DC82
 [npm-downloads-href]: https://npm.chart.dev/nuxt-ssr-telemetry
 
-[license-src]: https://img.shields.io/npm/l/nuxt-ssr-telemetry.svg?style=flat&colorA=020420&colorB=00DC82
-[license-href]: https://npmjs.com/package/nuxt-ssr-telemetry
+[license-src]: https://img.shields.io/badge/License-MIT-00DC82?style=flat&colorA=020420
+[license-href]: https://github.com/jeaneverton/nuxt-ssr-telemetry/blob/main/LICENSE
 
 [nuxt-src]: https://img.shields.io/badge/Nuxt-020420?logo=nuxt
 [nuxt-href]: https://nuxt.com
+
+[ci-src]: https://github.com/jeaneverton/nuxt-ssr-telemetry/actions/workflows/ci.yml/badge.svg
+[ci-href]: https://github.com/jeaneverton/nuxt-ssr-telemetry/actions/workflows/ci.yml
