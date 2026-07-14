@@ -20,10 +20,10 @@ export default defineNuxtModule<ModuleOptions>({
   setup(options, nuxt) {
     const resolver = createResolver(import.meta.url)
 
-    // Expose options to public runtimeConfig so they are accessible to plugins
     nuxt.options.runtimeConfig.public.telemetry = defu(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       nuxt.options.runtimeConfig.public.telemetry as any,
-      options
+      options,
     )
 
     // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
@@ -36,7 +36,7 @@ export default defineNuxtModule<ModuleOptions>({
     addImports({
       name: 'useLogger',
       as: 'useLogger',
-      from: resolver.resolve('./runtime/composables/useLogger')
+      from: resolver.resolve('./runtime/composables/useLogger'),
     })
   },
 })

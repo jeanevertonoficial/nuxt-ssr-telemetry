@@ -10,6 +10,10 @@
 
 It integrates **Pino** (a zero-overhead Node.js logging engine) into the Nitro backend and correlates client-side page rendering and browser API requests with backend database/external API call logs using a unique, consistent `request-id` trace.
 
+<p align="center">
+  <img src="./docs/demo.png" alt="Nuxt SSR Telemetry Playground Demo" style="width: 100%; border-radius: 12px;">
+</p>
+
 ---
 
 ## ⛰️ The Problem: Lost Traces in SSR Applications

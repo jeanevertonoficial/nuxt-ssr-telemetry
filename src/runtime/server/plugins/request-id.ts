@@ -6,14 +6,14 @@ import { useRuntimeConfig } from '#imports'
 export default defineNitroPlugin((nitroApp) => {
   nitroApp.hooks.hook('request', (event) => {
     const config = useRuntimeConfig()?.public?.telemetry as { enabled?: boolean, requestIdHeader?: string }
-    
+
     if (config?.enabled === false) {
       event.context.requestId = ''
       event.context.logger = {
         info: () => {},
         warn: () => {},
         error: () => {},
-        debug: () => {}
+        debug: () => {},
       }
       return
     }
@@ -27,9 +27,16 @@ export default defineNitroPlugin((nitroApp) => {
   })
 })
 
+export interface TelemetryLogger {
+  info: (...args: unknown[]) => void
+  warn: (...args: unknown[]) => void
+  error: (...args: unknown[]) => void
+  debug: (...args: unknown[]) => void
+}
+
 declare module 'h3' {
   interface H3EventContext {
     requestId: string
-    logger: any
+    logger: TelemetryLogger
   }
 }

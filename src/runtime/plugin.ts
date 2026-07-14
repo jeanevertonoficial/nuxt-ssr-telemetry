@@ -1,9 +1,9 @@
 import { defineNuxtPlugin, useRequestHeaders, useRequestEvent, useState, useRuntimeConfig } from '#app'
 
 export interface Logger {
-  info: (...args: any[]) => void
-  error: (...args: any[]) => void
-  warn: (...args: any[]) => void
+  info: (...args: unknown[]) => void
+  error: (...args: unknown[]) => void
+  warn: (...args: unknown[]) => void
 }
 
 export default defineNuxtPlugin((_nuxtApp) => {
@@ -27,27 +27,27 @@ export default defineNuxtPlugin((_nuxtApp) => {
   const requestId = requestIdState.value
 
   const logger: Logger = {
-    info: (...args: any[]) => {
+    info: (...args: unknown[]) => {
       if (config?.enabled !== false) {
         console.log(`[${requestId}]`, ...args)
       }
     },
-    error: (...args: any[]) => {
+    error: (...args: unknown[]) => {
       if (config?.enabled !== false) {
         console.error(`[${requestId}]`, ...args)
       }
     },
-    warn: (...args: any[]) => {
+    warn: (...args: unknown[]) => {
       if (config?.enabled !== false) {
         console.warn(`[${requestId}]`, ...args)
       }
-    }
+    },
   }
 
   return {
     provide: {
-      logger
-    }
+      logger,
+    },
   }
 })
 
