@@ -6,6 +6,8 @@
 [![Nuxt][nuxt-src]][nuxt-href]
 [![Build Status][ci-src]][ci-href]
 
+🎮 **[Live Demo / Playground](https://nuxt-ssr-telemetry-playground.vercel.app/)**
+
 `nuxt-ssr-telemetry` is a production-ready telemetry module for Nuxt 3 that solves the complex problem of **Log Traceability (Correlation)** across Server-Side Rendering (SSR) and Client-Side rendering (CSR) boundaries.
 
 It integrates **Pino** (a zero-overhead Node.js logging engine) into the Nitro backend and correlates client-side page rendering and browser API requests with backend database/external API call logs using a unique, consistent `request-id` trace.
