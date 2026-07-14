@@ -1,6 +1,6 @@
 {
   "name": "nuxt-ssr-telemetry",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A Nuxt 3 module to inject request IDs and structured Pino logging for SSR.",
   "author": "Jean Everton <[EMAIL_ADDRESS]>",
   "repository": {

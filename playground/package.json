@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
+    "prebuild": "npm --prefix .. run dev:prepare",
     "build": "nuxt build",
     "generate": "nuxt generate"
   },
