@@ -209,10 +209,10 @@ npm run test
 [npm-downloads-href]: https://npm.chart.dev/nuxt-ssr-telemetry
 
 [license-src]: https://img.shields.io/badge/License-MIT-00DC82?style=flat&colorA=020420
-[license-href]: https://github.com/jeaneverton/nuxt-ssr-telemetry/blob/main/LICENSE
+[license-href]: https://github.com/jeanevertonoficial/nuxt-ssr-telemetry/blob/master/LICENSE
 
 [nuxt-src]: https://img.shields.io/badge/Nuxt-020420?logo=nuxt
 [nuxt-href]: https://nuxt.com
 
-[ci-src]: https://github.com/jeaneverton/nuxt-ssr-telemetry/actions/workflows/ci.yml/badge.svg
-[ci-href]: https://github.com/jeaneverton/nuxt-ssr-telemetry/actions/workflows/ci.yml
+[ci-src]: https://github.com/jeanevertonoficial/nuxt-ssr-telemetry/actions/workflows/ci.yml/badge.svg?branch=master
+[ci-href]: https://github.com/jeanevertonoficial/nuxt-ssr-telemetry/actions/workflows/ci.yml
