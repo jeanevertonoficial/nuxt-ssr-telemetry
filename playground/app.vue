@@ -4,7 +4,7 @@
       <div class="logo-area">
         <span class="logo-icon">🧪</span>
         <h1>Nuxt SSR Telemetry</h1>
-        <span class="badge">v0.1.9</span>
+        <span class="badge">v0.1.10</span>
       </div>
       <p class="subtitle">
         Production-ready end-to-end trace correlation and structured Pino logging for Nuxt 3 applications.

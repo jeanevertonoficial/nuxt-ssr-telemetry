@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
-    "prebuild": "node ./node_modules/@nuxt/module-builder/dist/cli.mjs prepare ..",
+    "prebuild": "npx nuxt-module-build prepare ..",
     "build": "nuxt build",
     "generate": "nuxt generate"
   },
