@@ -4,12 +4,16 @@
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
-    "prebuild": "npm --prefix .. run dev:prepare",
+    "prebuild": "node ./node_modules/@nuxt/module-builder/dist/cli.mjs prepare ..",
     "build": "nuxt build",
     "generate": "nuxt generate"
   },
   "dependencies": {
     "my-module": "latest",
-    "nuxt": "^4.4.8"
+    "nuxt": "^4.4.8",
+    "nuxt-ssr-telemetry": "file:.."
+  },
+  "devDependencies": {
+    "@nuxt/module-builder": "^1.0.2"
   }
 }
